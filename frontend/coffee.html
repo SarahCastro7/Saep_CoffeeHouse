@@ -1,220 +1,232 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoffeeHouse</title>
+    <title>Forma+</title>
     <link rel="stylesheet" href="style.css/coffee.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
-    <!-- ============================================ -->
-    <!-- LAYOUT BIDIMENSIONAL: SIDEBAR + MAIN          -->
-    <!-- ============================================ -->
-    <div class="app-container">
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">F+</div>
+            <a href="index.html" class="logo-text"
+                style="text-decoration: none; color: inherit;">forma<span>+</span></a>
+        </div>
 
-        <!-- ========================================== -->
-        <!-- COLUNA 1: PERFIL (SIDEBAR)                 -->
-        <!-- ========================================== -->
-        <aside class="sidebar" id="sidebar">
-            
-            <!-- Logo e nome da empresa -->
-            <div class="perfil-header">
-                <img src="assets/images/CoffeeHouse.png" alt="CoffeeHouse" class="logo-img" id="logoEmpresa">
-                <h1 class="nome-empresa" id="nomeEmpresa">CoffeeHouse</h1>
-            </div>
+        <button class="menu-toggle" aria-label="Abrir menu" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-            <!-- Estatísticas -->
-            <div class="perfil-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Total de Pedidos</span>
-                    <span class="stat-value" id="totalPedidos">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Valor Total</span>
-                    <span class="stat-value" id="totalValor">R$ 0,00</span>
-                </div>
-            </div>
+        <div class="nav-actions" id="nav-actions">
+        </div>
+    </nav>
 
-            <!-- Usuário logado (aparece só após login) -->
-            <div class="perfil-usuario" id="perfilUsuario" style="display: none;">
-                <hr>
-                <div class="usuario-info">
-                    <img src="assets/images/avatar-default.png" alt="Avatar" class="avatar-usuario" id="avatarUsuario">
-                    <span class="usuario-nome" id="nomeUsuarioLogado">Usuário</span>
+    <section class="hero">
+        <div class="hero-container">
+
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: #6f493d; margin-right: 8px;"></i>
+                    <span>Transforme seu futuro profissional</span>
                 </div>
-                <div class="usuario-stats">
+
+                <h1>Prepare-se para o <br> <span class="gradient-text">mercado de trabalho</span></h1>
+
+                <p>Cursos profissionalizantes de qualidade, mentoria especializada e conexão direta com empresas que
+                    estão contratando. Comece sua jornada hoje!</p>
+
+                <div class="hero-buttons">
+                    <a href="cursos.html" class="btn-primary">Explorar Cursos →</a>
+                    <a href="sobre.html" class="btn-secondary">Saber Mais</a>
+                </div>
+
+                <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-label">Meus Pedidos</span>
-                        <span class="stat-value" id="meusPedidos">0</span>
+                        <h3>5.000+</h3>
+                        <p>Alunos formados</p>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label">Total Gasto</span>
-                        <span class="stat-value" id="meuGasto">R$ 0,00</span>
+                        <h3>100+</h3>
+                        <p>Cursos disponíveis</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>97%</h3>
+                        <p>Satisfação</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Botão Pedir (habilitado só logado) -->
-            <button class="btn-pedir" id="btnPedir" disabled>
-                <i class="fa-solid fa-cart-plus"></i> Pedir
-            </button>
-
-            <!-- Botão Sair (aparece só logado) -->
-            <button class="btn-sair" id="btnSair" style="display: none;">
-                <i class="fa-solid fa-right-from-bracket"></i> Sair
-            </button>
-
-            <!-- Rodapé do perfil -->
-            <footer class="sidebar-footer">
-                <p class="footer-brand">CoffeeHouse</p>
-                <div class="footer-social">
-                    <img src="assets/images/Instagram.svg" alt="Instagram" class="social-icon">
-                    <img src="assets/images/Twitter.svg" alt="Twitter" class="social-icon">
-                    <img src="assets/images/TikTok.svg" alt="TikTok" class="social-icon">
+            <div class="hero-image">
+                <div class="img-wrapper">
+                    <img src="img/imagem 1.jpg" alt="Estudantes trabalhando">
                 </div>
-                <p class="footer-copy">Copyright-2024</p>
-            </footer>
-        </aside>
+            </div>
 
-        <!-- ========================================== -->
-        <!-- COLUNA 2: MAIN (CONTEÚDO PRINCIPAL)         -->
-        <!-- ========================================== -->
-        <main class="main-content">
+        </div>
+    </section>
 
-            <!-- Cabeçalho com botão login/logout -->
-            <header class="main-header">
-                <div class="header-right">
-                    <!-- Botão Login (deslogado) -->
-                    <button class="btn-login" id="btnLogin">
-                        <i class="fa-solid fa-user"></i> Login
-                    </button>
-                    <!-- Usuário logado -->
-                    <div class="user-logged" id="userLogged" style="display: none;">
-                        <span class="user-welcome">Olá, <strong id="welcomeUser">admin</strong></span>
-                        <button class="btn-logout-header" id="btnLogoutHeader">
-                            <i class="fa-solid fa-right-from-bracket"></i> Logout
-                        </button>
+    <section id="beneficios" class="benefits-section">
+        <h2>Por que escolher o <span>forma+</span>?</h2>
+        <p>Oferecemos uma experiência completa de aprendizado para sua formação profissional</p>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-award"></i></div>
+                <h3>Certificado Reconhecido</h3>
+                <p>Certificações validadas por empresas e instituições do mercado.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-calendar-days"></i></div>
+                <h3>Flexibilidade Total</h3>
+                <p>Estude no seu ritmo, quando e onde quiser, com acesso vitalício.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+                <h3>Suporte Especializado</h3>
+                <p>Mentores e tutores disponíveis para tirar suas dúvidas em tempo real.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Conexão com Empresas</h3>
+                <p>Acesso a vagas exclusivas e processo seletivo facilitado para alunos.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-trophy"></i></div>
+                <h3>Projetos Práticos</h3>
+                <p>Aprenda fazendo com cases reais do mercado e monte seu portfólio.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+                <h3>Conteúdo Atualizado</h3>
+                <p>Cursos sempre atualizados com as últimas tendências do mercado.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">F+</div>
+                    <span class="logo-text">forma<span>+</span></span>
+                </div>
+                <p class="footer-desc">
+                    Transformando jovens em profissionais qualificados e preparados para o mercado de trabalho.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Cursos</h4>
+                <ul>
+                    <li><a href="#">Tecnologia</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Negócios</a></li>
+                    <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Profissões Técnicas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Como Funciona</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Parceiros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 forma+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggleBtn = document.getElementById('mobile-menu-btn');
+        const navbar = document.querySelector('.navbar');
+
+        if (menuToggleBtn) {
+            menuToggleBtn.addEventListener('click', () => {
+                navbar.classList.toggle('nav-active');
+
+                const icon = menuToggleBtn.querySelector('i');
+                if (navbar.classList.contains('nav-active')) {
+                    icon.className = 'fa-solid fa-xmark';
+                } else {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            });
+        }
+
+        function renderNavbarActions() {
+            const navActionsContainer = document.getElementById('nav-actions');
+            if (!navActionsContainer) return;
+
+            const isLogged = localStorage.getItem('userLogged') === 'true';
+
+            if (isLogged) {
+                navActionsContainer.innerHTML = `
+                    <div class="user-profile-nav">
+                        <a href="perfil.html">
+                            <img src="img/IMG_PERFIL.avif" alt="Foto de Perfil" class="nav-avatar">
+                        </a>
+                        <a href="#" id="btn-logout" class="btn-logout">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
                     </div>
-                </div>
-            </header>
+                `;
 
-            <!-- Filtros -->
-            <section class="filtros-section">
-                <div class="filtros-container">
-                    <button class="filtro-btn active" data-categoria="todos">Todos</button>
-                    <button class="filtro-btn" data-categoria="café">Café</button>
-                    <button class="filtro-btn" data-categoria="lanches">Lanches</button>
-                    <button class="filtro-btn" data-categoria="sobremesas">Sobremesas</button>
-                </div>
-            </section>
+                document.getElementById('btn-logout').addEventListener('click', (e) => {
+                    e.preventDefault();
 
-            <!-- Lista de Produtos -->
-            <section class="produtos-section">
-                <div class="produtos-grid" id="produtosGrid">
-                    <!-- Produtos serão carregados via JavaScript -->
-                </div>
-            </section>
+                    localStorage.setItem('userLogged', 'false');
 
-            <!-- Paginação -->
-            <section class="paginacao-section">
-                <div class="paginacao-container">
-                    <button class="page-btn" id="btnAnterior" disabled>
-                        <i class="fa-solid fa-chevron-left"></i> Anterior
-                    </button>
-                    <div class="page-numbers" id="pageNumbers">
-                        <!-- Gerado via JavaScript -->
-                    </div>
-                    <button class="page-btn" id="btnProximo">
-                        Próximo <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-            </section>
+                    navbar.classList.remove('nav-active');
+                    if (menuToggleBtn.querySelector('i')) menuToggleBtn.querySelector('i').className = 'fa-solid fa-bars';
 
-        </main>
-    </div>
+                    renderNavbarActions();
+                });
 
-    <!-- ============================================ -->
-    <!-- MODAL LOGIN                                   -->
-    <!-- ============================================ -->
-    <div class="modal-overlay" id="modalLogin">
-        <div class="modal">
-            <div class="modal-header">
-                <h2><i class="fa-solid fa-mug-hot"></i> Login</h2>
-                <button class="modal-close" id="modalClose">
-                    <img src="assets/images/x.svg" alt="Fechar" class="close-icon">
-                </button>
-            </div>
-            <form id="formLogin" class="modal-form">
-                <div class="form-group">
-                    <label for="loginUser">Usuário</label>
-                    <input type="text" id="loginUser" placeholder="Digite seu usuário" class="form-input">
-                    <span class="error-msg" id="errorUser"></span>
-                </div>
-                <div class="form-group">
-                    <label for="loginPass">Senha</label>
-                    <input type="password" id="loginPass" placeholder="Digite sua senha" class="form-input">
-                    <span class="error-msg" id="errorPass"></span>
-                </div>
-                <button type="submit" class="btn-entrar">Entrar</button>
-            </form>
-        </div>
-    </div>
+            } else {
+                 navActionsContainer.innerHTML = `
+                    <a href="login.html" class="btn-login">Entrar</a>
+                    <a href="cadastro.html" class="btn-cta">Começar Agora</a>
+                `;
+            }
+        }
 
-    <!-- ============================================ -->
-    <!-- MODAL PEDIDO                                  -->
-    <!-- ============================================ -->
-    <div class="modal-overlay" id="modalPedido">
-        <div class="modal">
-            <div class="modal-header">
-                <h2><i class="fa-solid fa-cart-shopping"></i> Meus Pedidos</h2>
-                <button class="modal-close" id="modalPedidoClose">
-                    <img src="assets/images/x.svg" alt="Fechar" class="close-icon">
-                </button>
-            </div>
-            <form id="formPedido" class="modal-form">
-                <div class="form-group">
-                    <label for="pedidoProduto">Produto</label>
-                    <select id="pedidoProduto" class="form-input">
-                        <option value="">Selecione um produto</option>
-                    </select>
-                    <span class="error-msg" id="errorProduto"></span>
-                </div>
-                <div class="form-group">
-                    <label for="pedidoQuantidade">Quantidade</label>
-                    <input type="number" id="pedidoQuantidade" placeholder="Quantidade" min="1" value="1" class="form-input">
-                    <span class="error-msg" id="errorQuantidade"></span>
-                </div>
-                <button type="submit" class="btn-entrar">Pedir</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- MODAL COMENTÁRIO                              -->
-    <!-- ============================================ -->
-    <div class="modal-overlay" id="modalComentario">
-        <div class="modal modal-comentario">
-            <div class="modal-header">
-                <h2><i class="fa-regular fa-comment"></i> Comentários</h2>
-                <button class="modal-close" id="modalComentarioClose">
-                    <img src="assets/images/x.svg" alt="Fechar" class="close-icon">
-                </button>
-            </div>
-            <div class="comentarios-lista" id="comentariosLista">
-                <!-- Comentários carregados via JavaScript -->
-            </div>
-            <div class="comentario-input-area">
-                <input type="text" id="comentarioInput" placeholder="Escrever um comentário..." class="form-input">
-                <button id="btnEnviarComentario">
-                    <img src="assets/images/send.svg" alt="Enviar" class="send-icon">
-                </button>
-            </div>
-            <span class="error-msg" id="errorComentario"></span>
-        </div>
-    </div>
-
-    <script src="js/script.js"></script>
+        renderNavbarActions();
+    </script>
 </body>
+
 </html>

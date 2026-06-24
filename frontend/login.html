@@ -1,131 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>forma+ Login</title>
+    <title>Login - CoffeeHouse</title>
+    <link rel="stylesheet" href="style.css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css/login.css">
-    <style>
-        .msg-erro {
-            background-color: #fee2e2;
-            color: #ef4444;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            border: 1px solid #fca5a5;
-            display: none;
-        }
-    </style>
 </head>
-
 <body>
 
-    <div class="card">
-        <a href="index.html" class="fechar" aria-label="Fechar">×</a>
+    <div class="auth-page">
+        <div class="auth-container">
+            <!-- Logo -->
+            <div class="logo-area">
+                <div class="logo-icon">☕</div>
+                <h1>Coffee<span>House</span></h1>
+                <p>Faça login para continuar</p>
+            </div>
 
-        <div class="topo">
-            <div class="logo">F+</div>
-        </div>
-
-        <h2>Bem-vindo de volta!</h2>
-        <p class="subtitulo">Entre para continuar sua jornada</p>
-
-        <div id="mensagem-erro" class="msg-erro"></div>
-
-        <form id="loginForm">
-            <div class="campo">
-                <label for="email">Email</label>
-                <div class="input-box">
-                    <i class="fa-regular fa-envelope icone"></i>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            <!-- Formulário de Login -->
+            <form id="formLogin">
+                <div class="form-group">
+                    <label for="loginUser">Usuário</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="loginUser" placeholder="Digite seu usuário" autocomplete="username">
+                    </div>
+                    <span class="error-msg" id="errorUser"></span>
                 </div>
-            </div>
 
-            <div class="campo">
-                <label for="password">Senha</label>
-                <div class="input-box">
-                    <i class="fa-solid fa-lock icone"></i>
-                    <input type="password" id="password" name="senha" placeholder="********" required>
-                    <i class="fa-regular fa-eye ver-senha" id="togglePassword" style="cursor: pointer;"></i>
+                <div class="form-group">
+                    <label for="loginPass">Senha</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPass" placeholder="Digite sua senha" autocomplete="current-password">
+                    </div>
+                    <span class="error-msg" id="errorPass"></span>
                 </div>
+
+                <button type="submit" class="btn-auth" id="btnLogin">
+                    <i class="fa-solid fa-right-to-bracket"></i> Entrar
+                </button>
+            </form>
+
+            <!-- Links -->
+            <div class="links-area">
+                <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+                <a href="index.html" class="back-home">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar para o início
+                </a>
             </div>
-
-            <div class="opcoes">
-                <label class="lembrar">
-                    <input type="checkbox" name="lembrar"> Lembrar-me
-                </label>
-                <a href="#" class="esqueci">Esqueci a senha</a>
-            </div>
-
-            <button type="submit" class="btn-entrar">Entrar</button>
-        </form>
-
-        <div class="linha">
-            <span>ou continue com</span>
         </div>
-
-        <div class="redes">
-            <button type="button" class="btn-rede">
-                <img src="img/google.png" alt="Google">
-                <span>Google</span>
-            </button>
-
-            <button type="button" class="btn-rede">
-                <img src="img/facebook.png" alt="Facebook">
-                <span>Facebook</span>
-            </button>
-        </div>
-
-        <p class="cadastro">Não tem uma conta? <a href="cadastro.html">Cadastre-se gratuitamente</a></p>
     </div>
 
-    <script>
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('password');
+    <!-- Toast para notificações -->
+    <div class="toast" id="toast"></div>
 
-        togglePassword.addEventListener('click', function () {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-
-        const loginForm = document.getElementById('loginForm');
-        const mensagemErro = document.getElementById('mensagem-erro');
-
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault(); 
-
-            const emailDigitado = document.getElementById('email').value.trim();
-            const senhaDigitada = document.getElementById('password').value;
-            const usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
-            const usuarioEncontrado = usuariosCadastrados.find(user => user.email === emailDigitado);
-
-            if (!usuarioEncontrado) {
-                mensagemErro.textContent = "Esta conta não existe. Verifique o e-mail ou cadastre-se!";
-                mensagemErro.style.display = 'block';
-                return;
-            }
-
-            if (usuarioEncontrado.senha !== senhaDigitada) {
-                mensagemErro.textContent = "Senha incorreta! Tente novamente.";
-                mensagemErro.style.display = 'block';
-                return;
-            }
-
-            mensagemErro.style.display = 'none';
-
-            localStorage.setItem('userLogged', 'true');
-             localStorage.setItem('usuarioAtivo', JSON.stringify(usuarioEncontrado));
- 
-            window.location.href = 'index.html';
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="js/login.js"></script>
 </body>
-
 </html>

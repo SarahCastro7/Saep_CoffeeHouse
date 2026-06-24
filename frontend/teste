@@ -5,3 +5,27 @@ Cards #fff8dc
 Bordas suaves #b89b85
 Ações perigosas #a94442
 Texto #2b1008
+
+coffeehouse/
+├── index.html
+├── login.html
+├── cadastro.html
+├── style.css/
+│   └── coffee.css          ← CSS COMPLETO
+├── js/
+│   ├── coffee.js           ← JS PRINCIPAL (index.html)
+│   ├── login.js            ← JS DA PÁGINA DE LOGIN
+│   └── cadastro.js         ← JS DA PÁGINA DE CADASTRO
+└── assets/
+    └── images/
+        ├── CoffeeHouse.png
+        ├── avatar-default.png
+        ├── avatar-admin.png
+        ├── avatar-daniel.png
+        ├── coracao.svg
+        ├── comentario.svg
+        ├── x.svg
+        ├── send.svg
+        ├── Instagram.svg
+        ├── Twitter.svg
+        └── TikTok.svg

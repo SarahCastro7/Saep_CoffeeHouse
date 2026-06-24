@@ -1,0 +1,366 @@
+/* ============================================ */
+/* VARIÁVEIS                                    */
+/* ============================================ */
+:root {
+    --fundo-geral: #f3e7d8;
+    --sidebar: #4b2c25;
+    --botoes: #6f493d;
+    --cards: #fff8dc;
+    --bordas-suaves: #b89b85;
+    --acoes-perigosas: #a94442;
+    --texto: #2b1008;
+    --branco: #ffffff;
+}
+
+/* ============================================ */
+/* ESTILOS GERAIS DAS PÁGINAS DE AUTENTICAÇÃO   */
+/* ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--fundo-geral);
+    color: var(--texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ============================================ */
+/* CONTAINER PRINCIPAL                          */
+/* ============================================ */
+.auth-page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    background: var(--cards);
+    border-radius: 20px;
+    padding: 50px 45px;
+    max-width: 420px;
+    width: 100%;
+    border: 2px solid var(--bordas-suaves);
+    box-shadow: 0 20px 60px rgba(75, 44, 37, 0.15);
+}
+
+/* ============================================ */
+/* LOGO                                         */
+/* ============================================ */
+.logo-area {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-area .logo-icon {
+    font-size: 48px;
+    background: var(--botoes);
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.logo-area h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--texto);
+}
+
+.logo-area h1 span {
+    color: var(--sidebar);
+}
+
+.logo-area p {
+    color: #888;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* ============================================ */
+/* FORMULÁRIO                                   */
+/* ============================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bordas-suaves);
+    font-size: 16px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 2px solid var(--bordas-suaves);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s;
+    background: #fff;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--botoes);
+}
+
+.input-wrapper input.error {
+    border-color: #ff0000;
+}
+
+.input-wrapper input.success {
+    border-color: #22c55e;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--bordas-suaves);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.toggle-pass:hover {
+    color: var(--texto);
+}
+
+.error-msg {
+    color: #ff0000;
+    font-size: 13px;
+    margin-top: 6px;
+    display: block;
+    min-height: 20px;
+}
+
+/* ============================================ */
+/* FORÇA DA SENHA (CADASTRO)                    */
+/* ============================================ */
+.password-strength {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.password-strength .strength-bar {
+    flex: 1;
+    height: 4px;
+    border-radius: 4px;
+    background: #e5e7eb;
+    transition: background 0.3s;
+}
+
+.password-strength .strength-bar.active {
+    background: #22c55e;
+}
+
+.password-strength .strength-text {
+    font-size: 12px;
+    color: #888;
+    min-width: 45px;
+    text-align: right;
+}
+
+/* ============================================ */
+/* TERMOS (CADASTRO)                            */
+/* ============================================ */
+.termos-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.termos-group input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--botoes);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.termos-group a {
+    color: var(--botoes);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.termos-group a:hover {
+    text-decoration: underline;
+}
+
+.error-checkbox {
+    color: #ff0000;
+    font-size: 12px;
+    display: block;
+    margin-top: 4px;
+}
+
+/* ============================================ */
+/* BOTÃO                                        */
+/* ============================================ */
+.btn-auth {
+    width: 100%;
+    padding: 14px;
+    background: var(--botoes);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-auth:hover {
+    background: var(--sidebar);
+    transform: scale(1.02);
+}
+
+.btn-auth:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================ */
+/* LINKS                                        */
+/* ============================================ */
+.links-area {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordas-suaves);
+}
+
+.links-area p {
+    color: #666;
+    font-size: 14px;
+}
+
+.links-area a {
+    color: var(--botoes);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.links-area a:hover {
+    color: var(--sidebar);
+    text-decoration: underline;
+}
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+.back-home:hover {
+    color: var(--botoes);
+}
+
+/* ============================================ */
+/* TOAST                                        */
+/* ============================================ */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-width: 400px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    background: #22c55e;
+}
+
+.toast.error {
+    background: #ef4444;
+}
+
+.toast.info {
+    background: var(--botoes);
+}
+
+/* ============================================ */
+/* RESPONSIVO                                   */
+/* ============================================ */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 30px 25px;
+    }
+
+    .logo-area h1 {
+        font-size: 24px;
+    }
+
+    .logo-area .logo-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 36px;
+    }
+}
