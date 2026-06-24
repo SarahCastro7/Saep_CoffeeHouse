@@ -1,0 +1,629 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    /* Evita barras de rolagem horizontais fantasmas */
+}
+
+/*--------------- NAVBAR ------------*/
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1C2B3E;
+}
+
+.logo-text span {
+    color: #80CBF3;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #1C2B3E;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-cta {
+    text-decoration: none;
+    background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
+}
+
+.btn-cta:hover {
+    opacity: 0.9;
+}
+
+/* Botão invisível no desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #1C2B3E;
+    cursor: pointer;
+}
+
+/* Garante o tamanho padrão e o formato de bolinha para a foto em qualquer página */
+.menu-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid #2181BD;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: inline-block;
+    /* Mantém o alinhamento correto do link */
+}
+
+.menu-avatar:hover {
+    transform: scale(1.05);
+}
+
+.menu-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Recorta a imagem proporcionalmente para não amassar */
+    display: block;
+}
+
+/* ------------ INICIO (HERO) ------------------*/
+.hero {
+    background: #dceffa;
+    padding: 60px 5%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.badge {
+    background: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border: 1px solid #e0eff7;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #1C2B3E;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-content p {
+    color: #64748B;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 10px 20px #2181bd33;
+}
+
+.btn-secondary {
+    background: white;
+    color: #3C678E;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #d0e4f0;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid #d0e4f0;
+    padding-top: 30px;
+}
+
+.stat-item h3 {
+    font-size: 1.5rem;
+    color: #1C2B3E;
+    margin: 0;
+}
+
+.stat-item p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #64748B;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.img-wrapper {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px #0500311a;
+}
+
+.img-wrapper img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Seção de Benefícios */
+.benefits-section {
+    padding: 80px 5%;
+    background-color: #F8FAFC;
+    text-align: center;
+}
+
+.benefits-section h2 {
+    font-size: 2rem;
+    color: #1C2B3E;
+    margin-bottom: 10px;
+}
+
+.benefits-section h2 span {
+    color: #2181BD;
+}
+
+.benefits-section>p {
+    color: #64748B;
+    margin-bottom: 50px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.benefit-card {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.icon-box i {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.benefit-card:hover .icon-box {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.benefit-card h3 {
+    color: #1C2B3E;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: #64748B;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/*---------------- FOOTER -----------------*/
+.footer {
+    background-color: #0B1320;
+    color: #fff;
+    padding: 60px 5% 30px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand .logo {
+    margin-bottom: 20px;
+}
+
+.footer-brand .logo-text {
+    color: #fff;
+}
+
+.footer-desc {
+    color: #94A3B8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    max-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #1E293B;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 1.1rem;
+}
+
+.social-links a:hover {
+    background: linear-gradient(90deg, #2181BD, #6DADD8);
+    transform: translateY(-3px);
+}
+
+.footer-links h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #94A3B8;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #80CBF3;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #1E293B;
+    text-align: center;
+    color: #64748B;
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVIDADE*/
+
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        margin: 0 auto 30px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        max-width: 500px;
+
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Ativa o botão de hambúrguer e fixa ele no canto direito da barra de forma limpa */
+    .menu-toggle {
+        display: block !important;
+        position: absolute;
+        top: 22px;
+        /* Alinhamento vertical perfeito com o centro do logo */
+        right: 20px;
+        z-index: 1002;
+    }
+
+    /* A navbar vira o bloco pai estrutural sólido */
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+        position: sticky;
+        top: 0;
+        background-color: #ffffff !important;
+        z-index: 1000;
+        transition: box-shadow 0.3s;
+    }
+
+    /* Isola o logo no topo para que ele não mude de lugar */
+    .navbar>.logo {
+        width: auto;
+    }
+
+    /* Oculta os menus por padrão no mobile */
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    /* MENU DE LINKS: Vira lista vertical sólida preenchendo 100% da largura */
+    .navbar.nav-active .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 24px;
+        padding: 30px 0 15px 0 !important;
+        margin: 0;
+        border-top: 1px solid #f0f0f0;
+        background-color: #ffffff !important;
+    }
+
+    /* MENU DE AÇÕES: Encaixa abaixo dos links sem sobreposição e com fundo sólido */
+    .navbar.nav-active .nav-actions {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+        padding: 15px 0 25px 0 !important;
+        margin: 0;
+        background-color: #ffffff !important;
+    }
+
+    /* CONTAINER DE AUTENTICAÇÃO MÓVEL */
+    .auth-block {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+        gap: 20px;
+        background-color: #ffffff !important;
+    }
+
+    /* --- AJUSTE IGUAL AO COMPORTAMENTO SOLICITADO PARA O PERFIL --- */
+    .navbar.nav-active .user-profile {
+        display: flex !important;
+        flex-direction: row !important;
+        /* Coloca a foto ao lado do botão 'Sair' */
+        justify-content: center !important;
+        /* Centraliza o conjunto na tela */
+        align-items: center !important;
+        /* Alinha os eixos verticalmente */
+        gap: 15px !important;
+        /* Espaçamento perfeito entre avatar e o botão */
+        width: 100% !important;
+        padding: 10px 0 !important;
+    }
+
+    /* Corrige o tamanho e margens do avatar no mobile */
+    .profile-avatar {
+        width: 50px !important;
+        height: 50px !important;
+        margin: 0 !important;
+    }
+
+    .profile-name {
+        font-size: 1.05rem !important;
+    }
+
+    /* Aplica a sombra suave na barra somente ao abrir o menu completo */
+    .navbar.nav-active {
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Formatação padrão para botões (Deslogado) ocuparem a largura total */
+    .navbar.nav-active .btn-login {
+        width: 100% !important;
+        text-align: center;
+        font-size: 1.05rem !important;
+        padding: 10px 0 !important;
+    }
+
+    .navbar.nav-active .btn-cta {
+        width: 100% !important;
+        text-align: center;
+        padding: 14px 0 !important;
+        font-size: 1rem !important;
+        display: block;
+    }
+
+    /* Mantém o grid das seções da landing page responsivos */
+    .hero {
+        padding: 40px 4%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-card {
+        padding: 25px;
+    }
+
+    /* Rodapé Responsivo */
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-brand .logo {
+        justify-content: center;
+    }
+
+    .footer-desc {
+        margin: 0 auto 20px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

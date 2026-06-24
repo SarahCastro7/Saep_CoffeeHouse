@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma+</title>
+    <link rel="stylesheet" href="style.css/coffee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .user-profile-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover
+        }
+
+        .btn-logout {
+            text-decoration: none;
+            color: #ef4444;
+            /* Vermelho suave para indicar saída */
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-logout:hover {
+            color: #dc2626;
+            transform: translateX(2px);
+        }
+
+        /* Responsividade para o menu mobile */
+        @media (max-width: 768px) {
+            .user-profile-nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .nav-avatar {
+                width: 55px;
+                height: 55px;
+            }
+
+            .btn-logout {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">F+</div>
+            <a href="index.html" class="logo-text"
+                style="text-decoration: none; color: inherit;">forma<span>+</span></a>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir menu" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="beneficios.html">Benefícios</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions">
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: #2181BD; margin-right: 8px;"></i>
+                    <span>Transforme seu futuro profissional</span>
+                </div>
+
+                <h1>Prepare-se para o <br> <span class="gradient-text">mercado de trabalho</span></h1>
+
+                <p>Cursos profissionalizantes de qualidade, mentoria especializada e conexão direta com empresas que
+                    estão contratando. Comece sua jornada hoje!</p>
+
+                <div class="hero-buttons">
+                    <a href="cursos.html" class="btn-primary">Explorar Cursos →</a>
+                    <a href="sobre.html" class="btn-secondary">Saber Mais</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>5.000+</h3>
+                        <p>Alunos formados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Cursos disponíveis</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>97%</h3>
+                        <p>Satisfação</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="img-wrapper">
+                    <img src="img/imagem 1.jpg" alt="Estudantes trabalhando">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="beneficios" class="benefits-section">
+        <h2>Por que escolher o <span>forma+</span>?</h2>
+        <p>Oferecemos uma experiência completa de aprendizado para sua formação profissional</p>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-award"></i></div>
+                <h3>Certificado Reconhecido</h3>
+                <p>Certificações validadas por empresas e instituições do mercado.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-calendar-days"></i></div>
+                <h3>Flexibilidade Total</h3>
+                <p>Estude no seu ritmo, quando e onde quiser, com acesso vitalício.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+                <h3>Suporte Especializado</h3>
+                <p>Mentores e tutores disponíveis para tirar suas dúvidas em tempo real.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Conexão com Empresas</h3>
+                <p>Acesso a vagas exclusivas e processo seletivo facilitado para alunos.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-trophy"></i></div>
+                <h3>Projetos Práticos</h3>
+                <p>Aprenda fazendo com cases reais do mercado e monte seu portfólio.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+                <h3>Conteúdo Atualizado</h3>
+                <p>Cursos sempre atualizados com as últimas tendências do mercado.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">F+</div>
+                    <span class="logo-text">forma<span>+</span></span>
+                </div>
+                <p class="footer-desc">
+                    Transformando jovens em profissionais qualificados e preparados para o mercado de trabalho.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Cursos</h4>
+                <ul>
+                    <li><a href="#">Tecnologia</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Negócios</a></li>
+                    <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Profissões Técnicas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Como Funciona</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Parceiros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 forma+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggleBtn = document.getElementById('mobile-menu-btn');
+        const navbar = document.querySelector('.navbar');
+
+        if (menuToggleBtn) {
+            menuToggleBtn.addEventListener('click', () => {
+                navbar.classList.toggle('nav-active');
+
+                const icon = menuToggleBtn.querySelector('i');
+                if (navbar.classList.contains('nav-active')) {
+                    icon.className = 'fa-solid fa-xmark';
+                } else {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            });
+        }
+
+        function renderNavbarActions() {
+            const navActionsContainer = document.getElementById('nav-actions');
+            if (!navActionsContainer) return;
+
+            const isLogged = localStorage.getItem('userLogged') === 'true';
+
+            if (isLogged) {
+                navActionsContainer.innerHTML = `
+                    <div class="user-profile-nav">
+                        <a href="perfil.html">
+                            <img src="img/IMG_PERFIL.avif" alt="Foto de Perfil" class="nav-avatar">
+                        </a>
+                        <a href="#" id="btn-logout" class="btn-logout">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
+                    </div>
+                `;
+
+                document.getElementById('btn-logout').addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    localStorage.setItem('userLogged', 'false');
+
+                    navbar.classList.remove('nav-active');
+                    if (menuToggleBtn.querySelector('i')) menuToggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+
+                    renderNavbarActions();
+                });
+
+            } else {
+                 navActionsContainer.innerHTML = `
+                    <a href="login.html" class="btn-login">Entrar</a>
+                    <a href="cadastro.html" class="btn-cta">Começar Agora</a>
+                `;
+            }
+        }
+
+        // Executa a verificação assim que a estrutura da página termina de carregar
+        renderNavbarActions();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Forma+</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css/cadastro.css">
+    <style>
+        /* Caixa estilizada para avisos e erros na tela */
+        .msg-erro {
+            background-color: #fee2e2;
+            color: #ef4444;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            border: 1px solid #fca5a5;
+            display: none;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="modal-container">
+        <a class="close-btn" href="index.html" aria-label="Fechar">&times;</a>
+
+        <div class="modal-header">
+            <div class="logo">F+</div>
+            <h2>Crie sua conta</h2>
+            <p>Comece sua jornada profissional hoje</p>
+        </div>
+
+        <div id="mensagem-erro" class="msg-erro"></div>
+
+        <form class="signup-form" id="signupForm">
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="name">Nome completo</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user input-icon"></i>
+                        <input type="text" id="name" name="nome" placeholder="Seu nome" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Telefone</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-phone input-icon"></i>
+                        <input type="tel" id="phone" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="password" name="senha" placeholder="••••••••" required>
+                        <i class="fa-regular fa-eye password-toggle" id="togglePassword" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+
+                <div class="input-group full-width-tablet">
+                    <label for="confirm-password">Confirmar senha</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-shield-halved input-icon"></i>
+                        <input type="password" id="confirm-password" placeholder="••••••••" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Eu aceito os <a href="#">termos de uso</a> e a <a href="#">política de
+                            privacidade</a></label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter">
+                    <label for="newsletter">Quero receber novidades e ofertas por email</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Criar Conta Gratuitamente</button>
+        </form>
+
+        <div class="modal-footer">
+            <p>Já possui uma conta? <a href="login.html">Entrar</a></p>
+        </div>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const signupForm = document.getElementById('signupForm');
+        const msgErro = document.getElementById('mensagem-erro');
+
+        signupForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const telefone = document.getElementById('phone').value.trim();
+            const senha = document.getElementById('password').value;
+            const confirmarSenha = document.getElementById('confirm-password').value;
+
+            if (senha !== confirmarSenha) {
+                msgErro.textContent = "As senhas não coincidem. Digite novamente!";
+                msgErro.style.display = 'block';
+                return;
+            }
+
+            
+            let usuariosCadastrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        
+            const emailJaExiste = usuariosCadastrados.some(user => user.email === email);
+            if (emailJaExiste) {
+                msgErro.textContent = "Este e-mail já está cadastrado em nosso sistema!";
+                msgErro.style.display = 'block';
+                return;
+            }
+
+            const novoUsuario = {
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                senha: senha
+            };
+
+           
+            usuariosCadastrados.push(novoUsuario);
+            localStorage.setItem('usuarios', JSON.stringify(usuariosCadastrados));
+
+            localStorage.setItem('userLogged', 'true');
+            localStorage.setItem('usuarioAtivo', JSON.stringify(novoUsuario));
+
+            msgErro.style.display = 'none';
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

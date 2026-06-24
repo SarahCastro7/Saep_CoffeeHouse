@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forma+ | Meu Perfil & Matches</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CONFIGURAÇÕES GERAIS E PALETA MODO CLARO DEFINITIVA
+           ========================================================================== */
+        :root {
+            --bg-global: #f3e7d8;
+            --bg-card:#fff8dc;
+            --text-color: #2b1008;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --accent-blue: #2181BD;
+            --accent-hover: #1a6796;
+            --tag-bg: #f1f5f9;
+            --tag-text: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-global);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Classes Utilitárias de Exibição */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Botão Principal Estilo forma+ */
+        .btn-main {
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-main:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* ==========================================================================
+           2. NAVBAR RESPONSIVA SÓLIDA
+           ========================================================================== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1002;
+        }
+
+        .logo-icon {
+            background: linear-gradient(90deg, #2181BD 0%, #6DADD8 100%);
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: #80CBF3;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1002;
+        }
+
+        .user-profile-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-blue);
+            cursor: pointer;
+            background-color: #cbd5e1;
+        }
+
+        .btn-logout {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            z-index: 1002;
+            padding: 8px;
+        }
+
+        /* ==========================================================================
+           3. AREA INTERATIVA MORE MATCH
+           ========================================================================== */
+        .profile-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .match-section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .badge-exclusive {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .match-section-title h1 {
+            font-size: 2.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .match-section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        .features-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .icon-blue { background-color: #2563eb; }
+        .icon-cyan { background-color: #06b6d4; }
+        .icon-orange { background-color: #f97316; }
+
+        .feature-text h3 {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .recent-matches-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        .recent-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .recent-icon {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .recent-header h4 {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .recent-header p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .company-mini-list {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .company-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--tag-bg);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* ==========================================================================
+           4. CARTÕES TINDER-STYLE
+           ========================================================================== */
+        .card-stack {
+            position: relative;
+            height: 480px;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .match-card {
+            position: absolute;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+            transform-origin: bottom center;
+        }
+
+        .match-card.swipe-left {
+            transform: translateX(-150%) rotate(-15deg) !important;
+            opacity: 0 !important;
+        }
+
+        .match-card.swipe-right {
+            transform: translateX(150%) rotate(15deg) !important;
+            opacity: 0 !important;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .match-badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card-logo {
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent-blue);
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px auto;
+        }
+
+        .card-info {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card-info h2 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .card-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .card-details div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .card-details i {
+            color: var(--text-secondary);
+            width: 16px;
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .skill-tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-pass {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .btn-pass:hover {
+            background: var(--tag-bg);
+        }
+
+        .btn-interest {
+            background: var(--accent-blue);
+            border: none;
+            color: white;
+        }
+
+        .btn-interest:hover {
+            background: var(--accent-hover);
+        }
+
+        /* ==========================================================================
+           5. JANELA MODAL DO PERFIL INTERATIVO (COMPACTO MOBILE)
+           ========================================================================== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            z-index: 3000;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            width: 100%;
+            max-width: 440px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 24px 20px;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            line-height: 1;
+            padding: 5px;
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            border: 3px solid var(--accent-blue);
+            position: relative;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #cbd5e1;
+        }
+
+        .cam-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--accent-blue);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            cursor: pointer;
+            border: 2px solid var(--bg-card);
+        }
+
+        .modal-header h2 {
+            color: var(--text-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .modal-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .user-bio {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            background-color: var(--tag-bg);
+            border-radius: 12px;
+            padding: 10px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box .num {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 2px;
+        }
+
+        .box .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .info {
+            text-align: left;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            font-size: 13px;
+        }
+
+        .item i {
+            color: var(--accent-blue);
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .skills-section-modal {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .skills-section-modal h3 {
+            font-size: 13px;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Formulários */
+        .input-box {
+            width: 100%;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .input-box label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .input-box input, .input-box textarea {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-global);
+            color: var(--text-color);
+            outline: none;
+            padding: 8px 10px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .fields-edit {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-inline {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-global);
+            border-radius: 8px;
+            padding: 0 10px;
+        }
+
+        .input-inline i {
+            color: var(--accent-blue);
+            width: 16px;
+        }
+
+        .input-inline input, .input-inline select {
+            width: 100%;
+            border: none;
+            background: none;
+            outline: none;
+            padding: 10px 6px;
+            font-size: 13px;
+            color: var(--text-color);
+        }
+
+        .actions-modal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-sub {
+            background-color: var(--bg-card);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           6. RESPONSIVIDADE EXCLUSIVA PARA DISPOSITIVOS MÓVEIS
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block !important;
+                position: absolute;
+                top: 18px;
+                right: 20px;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+                position: sticky;
+                top: 0;
+                background-color: var(--bg-card) !important;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                order: 3;
+                padding: 25px 0 10px 0 !important;
+                text-align: center;
+                gap: 20px;
+                margin: 0;
+                background-color: var(--bg-card) !important;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-actions {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                order: 4;
+                padding: 10px 0 20px 0 !important;
+                gap: 15px;
+                margin: 0;
+                background-color: var(--bg-card) !important;
+            }
+
+            .navbar.nav-active .nav-links,
+            .navbar.nav-active .nav-actions {
+                display: flex !important;
+            }
+
+            .user-profile-nav {
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 12px !important;
+                width: 100% !important;
+                padding: 10px 0 !important;
+            }
+
+            .nav-avatar {
+                width: 55px !important;
+                height: 55px !important;
+                margin-bottom: 5px;
+            }
+
+            .match-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 10px;
+            }
+
+            .card-stack {
+                order: -1;
+                height: 420px;
+                max-width: 100%;
+            }
+
+            .match-card {
+                padding: 20px;
+            }
+
+            .card-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+
+            .card-info h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">F+</div>
+            <a href="index.html" class="logo-text">forma<span>+</span></a>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir menu" id="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="beneficios.html">Benefícios</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="user-profile-nav">
+                <img src="img/IMG_PERFIL.avif" alt="Foto de Perfil" class="nav-avatar" id="nav-profile-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+                <a href="index.html" id="btn-logout" class="btn-logout">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-container">
+        
+        <div class="match-section-title">
+            <div class="badge-exclusive">
+                <i class="fa-solid fa-bolt"></i> Nosso Diferencial Exclusivo
+            </div>
+            <h1>More Match - Seu Match Profissional</h1>
+            <p>
+                Sistema inteligente que conecta você com empresas enquanto estuda. À medida que completa os cursos, recebe matches com vagas compatíveis com suas habilidades!
+            </p>
+        </div>
+
+        <div class="match-grid">
+            
+            <div class="features-sidebar">
+                <div class="feature-item">
+                    <div class="feature-icon icon-blue"><i class="fa-solid fa-heart"></i></div>
+                    <div class="feature-text">
+                        <h3>Match Inteligente</h3>
+                        <p>Algoritmo analisa suas habilidades e conecta você com vagas perfeitas para seu perfil.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon icon-cyan"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="feature-text">
+                        <h3>Evolução em Tempo Real</h3>
+                        <p>Cada curso concluído aumenta seu match com novas oportunidades.</p>
+                    </div>
+                </div>
+
+                <div class="recent-matches-card">
+                    <div class="recent-header">
+                        <i class="fa-solid fa-bolt recent-icon"></i>
+                        <div>
+                            <h4>Matches Recentes</h4>
+                            <p><span id="match-counter-value" style="font-weight: 700; color: var(--accent-blue);">14</span> empresas interessadas</p>
+                        </div>
+                    </div>
+                    <div class="company-mini-list">
+                        <div class="company-avatar" style="color: #2563eb;"><i class="fa-solid fa-chart-simple"></i></div>
+                        <div class="company-avatar" style="color: #ec4899;"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="company-avatar" style="color: #16a34a;"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="company-avatar" style="color: #a855f7;"><i class="fa-solid fa-brain"></i></div>
+                        <span id="extra-counter-label" style="margin-left: 5px;">+14</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-stack" id="card-stack-container">
+                <div class="match-card" id="cardVaga">
+                    <div class="card-top">
+                        <span class="match-badge" id="vagaMatchPercent">92% Match</span>
+                    </div>
+                    
+                    <div class="card-logo" id="logoPrincipal">
+                        <i class="fa-solid fa-code" id="vagaIcon"></i>
+                    </div>
+
+                    <div class="card-info">
+                        <h2 id="vagaTitle">Carregando vagas compatíveis...</h2>
+                        <p id="vagaCompany">Tech Solutions</p>
+                    </div>
+
+                    <div class="card-details">
+                        <div><i class="fa-solid fa-location-dot"></i> <span id="vagaLocation">Remoto</span></div>
+                        <div><i class="fa-solid fa-dollar-sign"></i> <span id="vagaSalary">R$ 4.500</span></div>
+                        <div><i class="fa-solid fa-gear"></i> Skills necessárias:</div>
+                        <div class="skills-container" id="vagaSkillsTags"></div>
+                    </div>
+
+                    <div class="card-actions">
+                        <button class="btn-action btn-pass" id="btnPassar"><i class="fa-solid fa-xmark"></i> Passar</button>
+                        <button class="btn-action btn-interest" id="btnInteressado"><i class="fa-solid fa-heart"></i> Interessado</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="modal hidden" id="profileModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        
+        <div class="card" id="viewCard">
+            <button class="btn-close" id="closeView">&times;</button>
+            
+            <div class="modal-header">
+                <div class="avatar">
+                    <img src="img/IMG_PERFIL.avif" alt="Foto de Perfil" class="user-img view-avatar-img" id="view-avatar-src" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+                </div>
+                <h2 id="txt-name">Seu Nome Aqui</h2>
+                <p class="subtitle" id="txt-role">Seu Cargo / Objetivo</p>
+                <p class="user-bio" id="txt-bio">Clique no botão abaixo para preencher as suas informações e iniciar o seu cadastro!</p>
+            </div>
+
+            <div class="stats">
+                <div class="box"><span class="num">0</span><span class="label">Cursos</span></div>
+                <div class="box"><span class="num">0h</span><span class="label">Estudo</span></div>
+                <div class="box"><span class="num" id="stat-matches">0</span><span class="label">Matches</span></div>
+            </div>
+
+            <div class="info">
+                <div class="item"><i class="fa-solid fa-location-dot"></i><span id="txt-location">Sua Cidade, UF</span></div>
+                <div class="item"><i class="fa-regular fa-envelope"></i><span id="txt-email">seu.email@exemplo.com</span></div>
+                <div class="item"><i class="fa-solid fa-graduation-cap"></i><span id="txt-specialty">Não definida</span></div>
+            </div>
+
+            <div class="skills-section-modal">
+                <h3>Habilidades</h3>
+                <div class="tags" id="view-skills-tags">
+                    <span class="tag">Nenhuma adicionada</span>
+                </div>
+            </div>
+
+            <button class="btn-main" id="goEdit">Editar Perfil</button>
+        </div>
+
+        <div class="card hidden" id="editCard">
+            <button class="btn-close" id="closeEdit">&times;</button>
+            
+            <form id="editForm" onsubmit="event.preventDefault();">
+                <div class="modal-header">
+                    <div class="avatar">
+                        <img src="img/IMG_PERFIL.avif" alt="Foto de Perfil" class="user-img edit-avatar-img" id="edit-avatar-src" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+                        <label class="cam-icon" for="fileInput"><i class="fa-solid fa-camera"></i></label>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="input-box">
+                        <label>Nome Completo</label>
+                        <input type="text" id="in-name" placeholder="Ex: Ana Carolina Silva" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Cargo / Status Atual</label>
+                        <input type="text" id="in-role" placeholder="Ex: Desenvolvedor Front-End Junior">
+                    </div>
+                    <div class="input-box">
+                        <label>Descrição / Biografia</label>
+                        <textarea id="in-bio" placeholder="Fale um pouco sobre você..." rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="fields-edit">
+                    <div class="input-inline"><i class="fa-solid fa-location-dot"></i><input type="text" id="in-location" placeholder="Cidade, UF"></div>
+                    <div class="input-inline"><i class="fa-regular fa-envelope"></i><input type="email" id="in-email" placeholder="E-mail de contato" required></div>
+                    <div class="input-inline">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <select id="in-specialty">
+                            <option value="Não definida">Escolha sua Área Principal</option>
+                            <option value="Front-End">Front-End (Tecnologia)</option>
+                            <option value="Back-End">Back-End (Tecnologia)</option>
+                            <option value="Marketing Digital">Marketing Digital</option>
+                            <option value="Design UX/UI">Design UX/UI</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-box" style="margin-bottom: 20px;">
+                    <label>Habilidades (Separadas por vírgula)</label>
+                    <input type="text" id="in-skills" placeholder="Ex: React, JavaScript, Design">
+                </div>
+
+                <div class="actions-modal">
+                    <button type="button" class="btn-sub" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="btn-main" id="saveBtn">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navProfileImg = document.getElementById("nav-profile-img");
+            const profileModal = document.getElementById("profileModal");
+            const viewCard = document.getElementById("viewCard");
+            const editCard = document.getElementById("editCard");
+            
+            const closeView = document.getElementById("closeView");
+            const closeEdit = document.getElementById("closeEdit");
+            const goEdit = document.getElementById("goEdit");
+            const cancelBtn = document.getElementById("cancelBtn");
+            const editForm = document.getElementById("editForm");
+
+            const txtName = document.getElementById("txt-name");
+            const txtRole = document.getElementById("txt-role");
+            const txtBio = document.getElementById("txt-bio");
+            const txtLocation = document.getElementById("txt-location");
+            const txtEmail = document.getElementById("txt-email");
+            const txtSpecialty = document.getElementById("txt-specialty");
+            const viewSkillsTags = document.getElementById("view-skills-tags");
+
+            const inName = document.getElementById("in-name");
+            const inRole = document.getElementById("in-role");
+            const inBio = document.getElementById("in-bio");
+            const inLocation = document.getElementById("in-location");
+            const inEmail = document.getElementById("in-email");
+            const inSpecialty = document.getElementById("in-specialty");
+            const inSkills = document.getElementById("in-skills");
+            const fileInput = document.getElementById("fileInput");
+
+            // --- CARREGAR DADOS DO LOCALSTORAGE ---
+            function carregarPerfil() {
+                const dadosSalvos = localStorage.getItem("forma-perfil");
+                if (dadosSalvos) {
+                    const dados = JSON.parse(dadosSalvos);
+                    
+                    // Atualiza textos
+                    txtName.textContent = dados.name || "Seu Nome Aqui";
+                    txtRole.textContent = dados.role || "Seu Cargo / Objetivo";
+                    txtBio.textContent = dados.bio || "Fale um pouco sobre você...";
+                    txtLocation.textContent = dados.location || "Sua Cidade, UF";
+                    txtEmail.textContent = dados.email || "seu.email@exemplo.com";
+                    txtSpecialty.textContent = dados.specialty || "Não definida";
+
+                    // Preenche inputs do form
+                    inName.value = dados.name || "";
+                    inRole.value = dados.role || "";
+                    inBio.value = dados.bio || "";
+                    inLocation.value = dados.location || "";
+                    inEmail.value = dados.email || "";
+                    inSpecialty.value = dados.specialty || "Não definida";
+                    inSkills.value = dados.skills || "";
+
+                    // Trata as tags de skills
+                    viewSkillsTags.innerHTML = "";
+                    if (dados.skills) {
+                        dados.skills.split(",").forEach(skill => {
+                            if (skill.trim()) {
+                                const span = document.createElement("span");
+                                span.className = "tag";
+                                span.textContent = skill.trim();
+                                viewSkillsTags.appendChild(span);
+                            }
+                        });
+                    } else {
+                        viewSkillsTags.innerHTML = '<span class="tag">Nenhuma adicionada</span>';
+                    }
+
+                    // Carrega fotos salvas em Base64
+                    if (dados.imgBase64) {
+                        document.getElementById("view-avatar-src").src = dados.imgBase64;
+                        document.getElementById("edit-avatar-src").src = dados.imgBase64;
+                        navProfileImg.src = dados.imgBase64;
+                    }
+                    
+                    document.getElementById("stat-matches").textContent = dados.matchesCount || "0";
+                }
+                
+                // Carrega contagem do Tinder
+                const tinderRestantes = localStorage.getItem("forma-tinder-count");
+                if (tinderRestantes !== null) {
+                    empresasRestantes = parseInt(tinderRestantes);
+                }
+                atualizarContadoresInterface();
+            }
+
+            // --- POOL DE VAGAS ---
+            const poolVagas = [
+                { title: "Desenvolvedor Front-End Junior", company: "AlphaTech Systems", local: "São Paulo, SP", salary: "R$ 4.200", specialty: "Front-End", skills: ["React", "JavaScript", "CSS"], icon: "fa-code", color: "#2563eb" },
+                { title: "React Developer Mobile", company: "Coders Lab", local: "Remoto", salary: "R$ 5.500", specialty: "Front-End", skills: ["React", "JavaScript"], icon: "fa-mobile-screen", color: "#8E44AD" },
+                { title: "Analista Node.js", company: "DataFlow Corp", local: "Remoto", salary: "R$ 6.000", specialty: "Back-End", skills: ["JavaScript", "Node.js"], icon: "fa-terminal", color: "#27AE60" },
+                { title: "Analista de Growth", company: "MarketPro Agência", local: "Rio de Janeiro, RJ", salary: "R$ 3.800", specialty: "Marketing Digital", skills: ["SEO", "Google Ads"], icon: "fa-chart-line", color: "#E67E22" }
+            ];
+
+            let vagaAtualIndex = 0;
+            let empresasRestantes = 14;
+
+            function atualizarContadoresInterface() {
+                document.getElementById("match-counter-value").textContent = empresasRestantes;
+                document.getElementById("extra-counter-label").textContent = `+${empresasRestantes}`;
+            }
+
+            function atualizarVagaMatch() {
+                const card = document.getElementById("cardVaga");
+                if (!card) return;
+
+                if (empresasRestantes <= 0) {
+                    card.innerHTML = `
+                        <div style="padding: 40px 10px; text-align: center;">
+                            <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #16a34a; margin-bottom: 15px;"></i>
+                            <h3 style="color: var(--text-color); margin-bottom: 8px;">Tudo revisado!</h3>
+                            <p style="color: var(--text-secondary); font-size: 14px;">Você avaliou todos os matches.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const userSkills = inSkills.value.split(",").map(s => s.trim().toLowerCase());
+                const userSpec = inSpecialty.value;
+
+                let listaFiltrada = poolVagas.filter(vaga => vaga.specialty === userSpec);
+                if (listaFiltrada.length === 0 || userSpec === "Não definida") {
+                    listaFiltrada = poolVagas;
+                }
+
+                const vaga = listaFiltrada[vagaAtualIndex % listaFiltrada.length];
+
+                let hits = 0;
+                vaga.skills.forEach(sk => {
+                    if (userSkills.includes(sk.toLowerCase())) hits++;
+                });
+
+                let matchPercent = 60 + Math.round((hits / vaga.skills.length) * 40);
+                document.getElementById("vagaTitle").textContent = vaga.title;
+                document.getElementById("vagaCompany").textContent = vaga.company;
+                document.getElementById("vagaLocation").textContent = vaga.local;
+                document.getElementById("vagaSalary").textContent = vaga.salary;
+                document.getElementById("vagaMatchPercent").textContent = `${matchPercent > 100 ? 100 : matchPercent}% Match`;
+                
+                document.getElementById("logoPrincipal").style.backgroundColor = vaga.color;
+                document.getElementById("vagaIcon").className = `fa-solid ${vaga.icon}`;
+
+                const vagaSkillsTags = document.getElementById("vagaSkillsTags");
+                vagaSkillsTags.innerHTML = "";
+                vaga.skills.forEach(sk => {
+                    const span = document.createElement("span");
+                    span.className = "skill-tag";
+                    span.textContent = sk;
+                    vagaSkillsTags.appendChild(span);
+                });
+
+                atualizarContadoresInterface();
+            }
+
+            function animarSwipe(direcao) {
+                const card = document.getElementById("cardVaga");
+                if (!card) return;
+
+                card.classList.add(direcao === "esquerda" ? "swipe-left" : "swipe-right");
+                if (empresasRestantes > 0) empresasRestantes--;
+                
+                localStorage.setItem("forma-tinder-count", empresasRestantes);
+
+                setTimeout(() => {
+                    vagaAtualIndex++;
+                    card.className = "match-card";
+                    atualizarVagaMatch();
+                }, 350);
+            }
+
+            document.getElementById("btnPassar").addEventListener("click", () => animarSwipe("esquerda"));
+            document.getElementById("btnInteressado").addEventListener("click", () => animarSwipe("direita"));
+
+            // --- FLUXOS DO MODAL ---
+            const fecharModal = () => profileModal.classList.add("hidden");
+            navProfileImg.addEventListener("click", () => {
+                profileModal.classList.remove("hidden");
+                viewCard.classList.remove("hidden");
+                editCard.classList.add("hidden");
+            });
+
+            closeView.addEventListener("click", fecharModal);
+            closeEdit.addEventListener("click", fecharModal);
+            goEdit.addEventListener("click", () => {
+                viewCard.classList.add("hidden");
+                editCard.classList.remove("hidden");
+            });
+            cancelBtn.addEventListener("click", () => {
+                editCard.classList.add("hidden");
+                viewCard.classList.remove("hidden");
+            });
+
+            // Upload de Imagem transformando em String persistível (Base64)
+            fileInput.addEventListener("change", (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const base64Img = event.target.result;
+                        document.getElementById("view-avatar-src").src = base64Img;
+                        document.getElementById("edit-avatar-src").src = base64Img;
+                        navProfileImg.src = base64Img;
+                        
+                        // Atualiza direto no objeto salvo
+                        const dados = JSON.parse(localStorage.getItem("forma-perfil")) || {};
+                        dados.imgBase64 = base64Img;
+                        localStorage.setItem("forma-perfil", JSON.stringify(dados));
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // SALVAMENTO REAL NO SUBMIT
+            editForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const randMatches = Math.floor(Math.random() * 5) + 3;
+
+                const perfilObjeto = {
+                    name: inName.value.trim(),
+                    role: inRole.value.trim(),
+                    bio: inBio.value.trim(),
+                    location: inLocation.value.trim(),
+                    email: inEmail.value.trim(),
+                    specialty: inSpecialty.value,
+                    skills: inSkills.value.trim(),
+                    matchesCount: randMatches,
+                    imgBase64: document.getElementById("view-avatar-src").src
+                };
+
+                // Salva no Navegador
+                localStorage.setItem("forma-perfil", JSON.stringify(perfilObjeto));
+
+                // Recarrega as informações na tela
+                carregarPerfil();
+                atualizarVagaMatch();
+
+                // Fecha janelas
+                fecharModal();
+            });
+
+            // Menu Hambúrguer Mobile
+            const menuToggleBtn = document.getElementById('mobile-menu-btn');
+            const navbarElement = document.querySelector('.navbar');
+            if (menuToggleBtn) {
+                menuToggleBtn.addEventListener('click', () => {
+                    navbarElement.classList.toggle('nav-active');
+                    menuToggleBtn.querySelector('i').className = navbarElement.classList.contains('nav-active') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+                });
+            }
+
+            // Executa na abertura da página
+            carregarPerfil();
+            atualizarVagaMatch();
+        });
+    </script>
+</body>
+
+</html>
